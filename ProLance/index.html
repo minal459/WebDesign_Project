@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProLance</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- (Optional) Bootstrap Icons CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  />
+
+  <style>
+    /* ========== CUSTOM STYLES ========== */
+
+    /* Top bar styling (brand + language + sign in/join) */
+    .top-bar {
+      background-color: #f8f9fa; /* Light grey to match navbar-light BG */
+      padding: 0.5rem 0;
+    }
+    .top-bar .brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #000; /* Adjust as needed */
+    }
+
+    /* We hide the normal navbar brand so that only top-bar brand is visible */
+    .navbar-brand {
+      display: none;
+    }
+
+    /* Green hero section */
+    .hero-section {
+      background-color: #3B5323; /* Adjust if you prefer a different green */
+      color: #fff;
+      position: relative;
+      padding: 60px 0;
+    }
+    .hero-section .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero-section .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    /* Person image on the right in the hero */
+    
+    .hero-img {
+    /* remove text-align: center; */
+    text-align: right; /* or .text-end can do the same */
+    margin-bottom: 0;  /* remove any extra margin */
+    padding-bottom: 0; /* remove any extra padding */
+    }
+    .hero-img img {
+      max-width: 100%;
+    }
+
+    /* Popular tags */
+    .popular-tags .btn {
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    /* Carousel images / categories 
+    .carousel-item img {
+      max-height: 200px;
+      object-fit: contain;
+    }*/
+        /* Make the carousel images smaller */
+    .carousel-item img {
+    max-height: 120px; /* reduce from 200px to, say, 120px */
+    object-fit: cover; /* or "contain", whichever look you prefer */
+    width: auto;       /* ensure aspect ratio remains natural */
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+    background-image: none;      /* Remove the default chevron SVG */
+    background-color: #000;      /* Solid black background */
+    width: 2rem;                 /* Adjust size as desired */
+    height: 2rem;
+    border-radius: 50%;          /* Optional: makes it circular */
+    }
+
+
+    /* Navy section for Freelance Services (no cards, just icons + text) */
+    .services-section {
+      padding: 60px 0;
+      background-color: #0c1446; /* Navy background */
+      color: #fff;
+    }
+    .services-section h2 {
+      margin-bottom: 40px;
+    }
+    .services-section img {
+    width: 60px;
+    height: 60px;        /* force a uniform height */
+    object-fit: contain; /* crop any extra white space if possible */
+    margin-bottom: 10px;
+    display: block;
+  }
+    /* (Removing .card styles to avoid boxy look) */
+
+    /* Footer styles */
+    footer .footer-top {
+      background-color: #333;
+      color: #fff;
+      padding: 40px 0;
+    }
+    footer .footer-bottom {
+      background-color: #3B5323;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .video-section {
+    padding: 50px 0;
+    background-color: white; /* Light grey background */
+}
+.video-section h2 {
+    margin-bottom: 30px;
+}
+.video-section h3 {
+    color: #3B5323; /* Match theme color */
+}
+.video-section p {
+    font-size: 1.1rem;
+}
+.cta-section {
+    padding: 50px 0;
+    background-color: white; /* Match the theme */
+    color: black;
+}
+.cta-section h2 {
+    font-weight: bold;
+}
+.cta-section .btn {
+    margin-top: 10px;
+}
+.card-img-top {
+  max-width: 30%; /* Adjust the size */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the image */
+}
+    
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR (Brand + Language + Sign in/Join) -->
+<div class="top-bar">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- Brand on the left -->
+    <a href="#" class="brand">ProLance</a>
+
+    <!-- Right side: Language dropdown + Sign in + Join -->
+    <div class="d-flex align-items-center">
+      <!-- Sign in (green outline) / Join (solid green) -->
+      <button class="btn btn-outline-success me-2">Sign in</button>
+      <button class="btn btn-success">Join</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR (Categories Only) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Navbar Toggler for mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCategories"
+      aria-controls="navbarCategories"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Category Links -->
+    <div class="collapse navbar-collapse" id="navbarCategories">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#">Graphics & Design</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Programming & Tech</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Digital Marketing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Video & Animation</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Writing & Translation</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Music & Audio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Data</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Photography</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Text Column -->
+      <div class="col-md-6 hero-text">
+        <h1>Find the right freelance service, right away</h1>
+        <p>Search for any service...</p>
+
+        <!-- Search Input -->
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search for any service..."
+            aria-label="Search"
+          />
+          <button class="btn btn-dark" type="button">Search</button>
+        </div>
+
+        <!-- Popular tags -->
+        <div class="popular-tags">
+          <button class="btn btn-light btn-sm">Website Design</button>
+          <button class="btn btn-light btn-sm">Wordpress</button>
+          <button class="btn btn-light btn-sm">Logo Design</button>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+
+      <div class="col-md-3 hero-img text-end mb-0 pb-0" >
+        <img
+          src="img/random1.png"
+          alt="Hero Person"
+          style="max-width: 100%; margin-bottom: 0;"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES CAROUSEL (Writing, Music, etc.) -->
+<section class="py-5">
+  <div class="container">
+    <h3 class="mb-4">Browse Top Categories</h3>
+    <div id="categoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/writentranslate.PNG"
+                class="d-block mx-auto"
+                alt="Writing and Translation"
+              />
+              <h6>Writing & Translation</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/musicnrec.PNG"
+                class="d-block mx-auto"
+                alt="Music & Audio"
+              />
+              <h6>Music & Audio</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/businessimg.PNG"
+                class="d-block mx-auto"
+                alt="Business"
+              />
+              <h6>Business</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/dataimg.PNG"
+                class="d-block mx-auto"
+                alt="Data"
+              />
+              <h6>Data</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/photoimg.PNG"
+                class="d-block mx-auto"
+                alt="Photography"
+              />
+              <h6>Photography</h6>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/graphic.PNG"
+                class="d-block mx-auto"
+                alt="Graphics & Design"
+              />
+              <h6>Graphics & Design</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/program.PNG"
+                class="d-block mx-auto"
+                alt="Programming & Tech"
+              />
+              <h6>Programming & Tech</h6>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+              <img
+                src="img/digitalmarket.PNG"
+                class="d-block mx-auto"
+                alt="Digital Marketing"
+              />
+              <h6>Digital Marketing</h6>
+            </div>
+            <!-- Add more col items if needed -->
+          </div>
+        </div>
+      </div>
+      <!-- Carousel controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#categoriesCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#categoriesCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+    <div class="container">
+      <h2 class=".text-start">Explore More</h2>
+  
+      <!-- First Video Row -->
+      <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+          <video width="100%" controls>
+            <source src="img/freelancer.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-md-6">
+          <h3>How to Get Started?</h3>
+          <p>
+            Learn the basics of freelancing and how to set up your profile to attract clients.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Second Video Row -->
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <video width="100%" controls>
+            <source src="img/prolance.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-md-6">
+          <h3>Tips for Success</h3>
+          <p>
+            Discover key strategies to stand out in the freelancing market and secure more projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+<!-- FREELANCE SERVICES (Navy Background, NO cards) -->
+<section
+  class="services-section"
+  style="background-color: #0C1446; color: #FFF;"
+>
+  <div class="container">
+    <h2 class="mb-4">Freelance Services</h2>
+    <!-- 
+      Use a responsive grid: row-cols-2 row-cols-md-5
+      => 2 columns on small devices, 5 columns on md+ 
+      Adjust g-4 for spacing, text-center for centering
+    -->
+    <div class="row row-cols-2 row-cols-md-5 g-4 text-center">
+      <!-- Example item -->
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <!-- Replace with your actual icon image URL -->
+          <img
+            src="img/graphics-design.svg"
+            alt="Graphics & Design"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Graphics & Design</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/online-marketing.svg"
+            alt="Digital Marketing"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Digital Marketing</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/writing-translation.svg"
+            alt="Writing & Translation"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Writing & Translation</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/video-animation.svg"
+            alt="Video & Animation"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Video & Animation</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/music-audio.svg"
+            alt="Music & Audio"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Music & Audio</p>
+        </div>
+      </div>
+
+      <!-- Next row: More items (Programming, Business, etc.) -->
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/programming.svg"
+            alt="Programming & Tech"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Programming & Tech</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/business.svg"
+            alt="Business"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Business</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/lifestyle.svg"
+            alt="Lifestyle"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Lifestyle</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/data.svg"
+            alt="Data"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Data</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <img
+            src="img/photography.svg"
+            alt="Photography"
+            style="width: 60px; margin-bottom: 10px;"
+          />
+          <p class="mb-0">Photography</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CALL TO ACTION: FEATURED FREELANCER -->
+<section class="cta-section text-center">
+    <div class="container">
+      <h2 class="mb-3">Freelancer Spotlight</h2>
+      <p class="lead">Meet our top-rated freelancer of the month!</p>
+      
+      <div class="card mx-auto" style="max-width: 400px;">
+        <img src="img/searchman.png" class="card-img-top" alt="Freelancer">
+        <div class="card-body">
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Expert in Graphic Design & Branding.</p>
+          <p class="card-text">Rated ⭐⭐⭐⭐⭐ by clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- FOOTER -->
+<footer>
+  <!-- Footer top (dark gray) -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <!-- Categories Column -->
+        <div class="col-md-3 mb-3">
+          <h5>Categories</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Graphics & Design</a></li>
+            <li><a href="#">Digital Marketing</a></li>
+            <li><a href="#">Writing & Translation</a></li>
+            <li><a href="#">Video & Animation</a></li>
+            <li><a href="#">Music & Audio</a></li>
+            <li><a href="#">Programming & Tech</a></li>
+            <li><a href="#">Data</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Lifestyle</a></li>
+            <li><a href="#">Photography</a></li>
+          </ul>
+        </div>
+        <!-- Support Column -->
+        <div class="col-md-3 mb-3">
+          <h5>Support</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Help & Support</a></li>
+            <li><a href="#">Trust & Safety</a></li>
+            <li><a href="#">Selling on ProLance</a></li>
+            <li><a href="#">Buying on ProLance</a></li>
+          </ul>
+        </div>
+        <!-- About Column -->
+        <div class="col-md-3 mb-3">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Press & News</a></li>
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <!-- Community Column -->
+        <div class="col-md-3 mb-3">
+          <h5>Community</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Customer Success Stories</a></li>
+            <li><a href="#">Community Hub</a></li>
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer bottom (green) -->
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="mb-0">
+        &copy; 2023 ProLance. All rights reserved
+        &nbsp;|&nbsp;
+        <i class="bi bi-twitter"></i>
+        <i class="bi bi-facebook ms-2"></i>
+        <i class="bi bi-linkedin ms-2"></i>
+        <i class="bi bi-pinterest ms-2"></i>
+        <i class="bi bi-instagram ms-2"></i>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (with Popper) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>
