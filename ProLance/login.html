@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProLance - Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      margin-bottom: 15px;
+    }
+    .input-group-text {
+      background-color: #e9ecef;
+      border-right: 0;
+    }
+    .form-control {
+      border-left: 0;
+    }
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #007bff;
+    }
+    
+    /* New rules for login button color */
+    #loginButton {
+      background-color: #3B5323 !important;
+      border-color: #3B5323 !important;
+    }
+    #loginButton:hover {
+      background-color: #324423 !important;
+      border-color: #324423 !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <div class="container">
+      <!--<a class="navbar-brand fw-bold" href="#">ProLance</a>-->
+      <a href="index.html" class="navbar-brand fw-bold">ProLance</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <select id="languageSelect" class="form-select form-select-sm border-0">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="login-container">
+      <h3 id="loginTitle" class="text-center fw-bold">Welcome back</h3>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label id="label_username" class="form-label">Username</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" class="form-control" placeholder="Enter your username" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label id="label_password" class="form-label">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Enter your Password" required>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button type="submit" id="loginButton" class="btn btn-primary">Login</button>
+        </div>
+        <div class="text-center mt-3">
+          <a id="registerLink" href="register.html">Don't have an account yet?</a> | 
+          <a id="forgotPasswordLink" href="#">Forgot your password?</a>
+        </div>                
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p id="footerText">&copy; 2025 ProLance. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const languageSelect = document.getElementById("languageSelect");
+
+      // Translation Dictionary
+      const translations = {
+        "en": {
+          "loginTitle": "Welcome back",
+          "label_username": "Username",
+          "label_password": "Password",
+          "loginButton": "Login",
+          "registerLink": "Don't have an account yet?",
+          "forgotPasswordLink": "Forgot your password?",
+          "footerText": "© 2025 ProLance. All rights reserved."
+        },
+        "es": {
+          "loginTitle": "Bienvenido de nuevo",
+          "label_username": "Nombre de usuario",
+          "label_password": "Contraseña",
+          "loginButton": "Iniciar sesión",
+          "registerLink": "¿No tienes una cuenta?",
+          "forgotPasswordLink": "¿Olvidaste tu contraseña?",
+          "footerText": "© 2025 ProLance. Todos los derechos reservados."
+        }
+      };
+
+      // Function to translate the page
+      function translatePage(language) {
+        document.getElementById("loginTitle").innerText = translations[language]["loginTitle"];
+        document.getElementById("label_username").innerText = translations[language]["label_username"];
+        document.getElementById("label_password").innerText = translations[language]["label_password"];
+        document.getElementById("loginButton").innerText = translations[language]["loginButton"];
+        document.getElementById("registerLink").innerText = translations[language]["registerLink"];
+        document.getElementById("forgotPasswordLink").innerText = translations[language]["forgotPasswordLink"];
+        document.getElementById("footerText").innerText = translations[language]["footerText"];
+      }
+
+      // Event Listener for Language Selection
+      languageSelect.addEventListener("change", function () {
+        const selectedLanguage = languageSelect.value;
+        translatePage(selectedLanguage);
+      });
+    });
+  </script>
+</body>
+</html>
