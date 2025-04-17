@@ -36,7 +36,7 @@ export const save = async (newUser) => {
         from: 'your-email@gmail.com',
         to: postUser.email,
         subject: 'Account Activation',
-        text: `Dear ${postUser.name},\n\nWelcome to Talent Hive! We are delighted to have you on board.\n\nTo activate your account, please click on the following link:\nhttp://localhost:3000/activate/${activationToken}\n\nIf you did not create an account with us, kindly ignore this email.\n\nThank you for choosing Talent Hive.\n\nBest Regards,\nThe Talent Hive Support Team`,
+        text: `Dear ${postUser.name},\n\nWelcome to ProLance! We are delighted to have you on board.\n\nTo activate your account, please click on the following link:\nhttp://localhost:3000/activate/${activationToken}\n\nIf you did not create an account with us, kindly ignore this email.\n\nThank you for choosing ProLance.\n\nBest Regards,\nThe ProLance Support Team`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
