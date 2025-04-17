@@ -1,0 +1,67 @@
+/* Existing CSS styles remain here */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.register-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.seller-active {
+    background-color: #B3C99C !important; 
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+.d-grid {
+    margin-top: 20px;
+}
+
+.img-preview {
+    width: 80px;  /* Small thumbnail */
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Override for navbar background color */
+.navbar {
+    background-color: #3B5323 !important;
+}
+
+/* New rules for the Sign Up button */
+#signupButton {
+    background-color: #3B5323 !important;
+    border-color: #3B5323 !important;
+}
+
+#signupButton:hover {
+    background-color: #314919 !important;
+    border-color: #314919 !important;
+}
+/* Change the toggle button color when checked */
+.form-check-input:checked {
+    background-color: #3B5323 !important;
+    border-color: #3B5323 !important;
+  }
+  
+  /* Optional: Adjust focus state */
+  .form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(59,83,35,0.25);
+  }
+  
